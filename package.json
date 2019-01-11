@@ -1,0 +1,23 @@
+{
+  "name": "Rest-API-with-Express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullmicgo/Rest-API-with-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nullmicgo/Rest-API-with-Express/issues"
+  },
+  "homepage": "https://github.com/nullmicgo/Rest-API-with-Express#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
