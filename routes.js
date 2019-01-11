@@ -7,6 +7,7 @@ var router = express.Router();
 // GET /questions
 // Route for questions collection
 router.get("/", function(req, res, next){
+    //var o = obj.prop;
     res.json({
         response:"You sent me a GET request"
     });
@@ -70,14 +71,24 @@ router.delete("/:qID/answers/:aID", function(req, res){
 // POST /questions/:qID/answers/:aID/vote-up
 // POST /questions/:qID/answers/:aID/vote-down
 // Vote on a specific answer
-router.post("/:qID/answers/:aID/vote-:dir", function(req, res){
-            res.json({
-                response:"You sent me a POST request to /vote-"+req.params,
-                questionId: req.params.qID,
-                answerId: req.params.aID,
-                vote: req.params.dir
-            });
-});
+router.post("/:qID/answers/:aID/vote-:dir",function(req, res, next){
+         //another middleware
+        //for examine the URL
+        if(req.params.dir.search(/^(up|down)$/) === -1){
+                var err = new Error("Not Found");
+                err.status = 404;
+                next(err);
+        }else{
+            next();
+        }
+    }, function(req, res){
+                res.json({
+                    response:"You sent me a POST request to /vote-"+req.params.dir,
+                    questionId: req.params.qID,
+                    answerId: req.params.aID,
+                    vote: req.params.dir
+                });
+    });
 
 
 module.exports = router;
