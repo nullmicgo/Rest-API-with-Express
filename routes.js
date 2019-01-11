@@ -48,7 +48,9 @@ router.put("/:qID/answers/:aID", function(req, res){
     res.json({
         response:"You sent me a PUT request to /answers",
         questionId: req.params.qID,
-        body: req.body
+        body: {
+            prop:"value"
+        }
     });
 
 });
